@@ -3,8 +3,26 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
+#Typography replacer
+define typography = (what)
+    : replacements = [
+        ('. ','. {w=.2}'),
+        ('? ','? {w=.25}'),
+        ('! ','! {w=.25}'),
+        (', ',', {w=.15}'),
+    ]
+
+    for item in replacements:
+        what = what.replace(item[0],item[1])
+
+        return what
+    
+    define config.say_menu_text_filter = typography
+
+
 define n = Character("")
 define d = Character("???")
+define e = Character("")
 define config.name = ("This job is worse than hell.")
 
 
@@ -24,31 +42,37 @@ label start:
 
     # These display lines of dialogue.
 
-    n "You feel…"
 
-    n "fuzzy…"
+    n "{cps=10}You feel…{/cps}"
 
-    n "everything is-"
+    n "{cps=10}fuzzy…{/cps}"
 
-    n "black."
+    n "{cps=10}everything is-{/cps}"
+
+    n "{cps=10}black.{/cps}"
 
     scene bg black
     with fade 
+    pause 1.5
 
-    d "{i}My head…{/i}"
+    d "{cps=15}{i}My head…{/i}{/cps}"
 
-    d "{i}it {b}hurts.{/b}{/i}"
+    d "{cps=15}{i}it {w}{b}hurts.{/b}{/i}"
 
-    d "{i}Why…{/i}"
+    d "{cps=15}{i}Why…{/i}"
 
-    d "{i}what… what's happening…?{/i}"
+    d "{cps=15ß}{i}what… what's happening…?{/i}"
 
-    n "You give in, and you..."
+    n "{cps=15ß}You give in, and you..."
 
-    n "fall into slumber. "
+    n "{cps=15}fall into slumber. "
 
     scene bg white
     with fade
+
+    n "You slowly open your eyes."
+
+    n "The surface you're laying on feels cold, {w}making you shiver."
 
     d "Agh... what the-"
 
@@ -58,18 +82,18 @@ label start:
 
     scene bg sometime later
     with fade
-    pause
+    pause 0.5
 
     scene bg white
     with fade
 
-    d "{i}Why is it so... so bright?!{/i}"
+    d "{i}Why is it so... {w}so bright?!{/i}"
 
     d "Ugh... I think I'm gonna go blind."
 
     d "Where even is this...?"
 
-    d "No place in hell is this... {i}bright.{/i}"
+    d "No place in hell is this... {w}{i}bright.{/i}"
 
     # This ends the game.
 
