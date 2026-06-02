@@ -3,23 +3,6 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-#Typography replacer
-define typography = (what)
-    : replacements = [
-        ('. ','. {w=.2}'),
-        ('? ','? {w=.25}'),
-        ('! ','! {w=.25}'),
-        (', ',', {w=.15}'),
-    ]
-
-    for item in replacements:
-        what = what.replace(item[0],item[1])
-
-        return what
-    
-    define config.say_menu_text_filter = typography
-
-
 define n = Character("")
 define d = Character("???")
 define e = Character("")
@@ -43,13 +26,13 @@ label start:
     # These display lines of dialogue.
 
 
-    n "{cps=10}You feel…{/cps}"
+    n "{cps=10}You feel…"
 
     n "{cps=10}fuzzy…{/cps}"
 
     n "{cps=10}everything is-{/cps}"
 
-    n "{cps=10}black.{/cps}"
+    n "{cps=15}black.{/cps}"
 
     scene bg black
     with fade 
@@ -57,43 +40,56 @@ label start:
 
     d "{cps=15}{i}My head…{/i}{/cps}"
 
-    d "{cps=15}{i}it {w}{b}hurts.{/b}{/i}"
+    d "{cps=15}{i}it{/cps} {w=0.5}{b}{i}hurts.{/b}{/i}"
 
-    d "{cps=15}{i}Why…{/i}"
+    d "{cps=15}{i}Why… {w=0.5}what- what's happening…?{/i}"
 
-    d "{cps=15ß}{i}what… what's happening…?{/i}"
+    n "{cps=15}You give in, and you... {w=0.5}fall into slumber."
 
-    n "{cps=15ß}You give in, and you..."
-
-    n "{cps=15}fall into slumber. "
-
+    pause 1.5
     scene bg white
     with fade
+    pause 1.5
 
     n "You slowly open your eyes."
 
-    n "The surface you're laying on feels cold, {w}making you shiver."
+    n "The surface you're laying on feels cold, {w=0.5}making you shiver."
 
     d "Agh... what the-"
 
     d "AHHH MY EYES!"
 
-    d "{i}Gughh...{/i}"
+    d "{i}Urggh...{/i}"
 
     scene bg sometime later
     with fade
-    pause 0.5
+    pause 1.5
 
     scene bg white
     with fade
+    pause 1.5
 
-    d "{i}Why is it so... {w}so bright?!{/i}"
+    d "{i}Why is it so... {w=0.5}so bright?!{/i}"
 
     d "Ugh... I think I'm gonna go blind."
 
     d "Where even is this...?"
 
-    d "No place in hell is this... {w}{i}bright.{/i}"
+    d "No place in hell is this... {w=0.5}{i}bright.{/i}"
+
+    d "It's so {i}cold{/i} too."
+
+    #Show scene of inside the restaurant
+
+    d "Wait, {w=0.5}this looks... {w=1}familiar..."
+
+    #Realisation sound effect & worried sprite
+
+    d "No... {w=0.5}don't tell me..."
+
+    #Show the same scene inside the restaurant but sprite is gone
+
+    d "{b}I'M BACK IN THE BUILDING AGAIN!"
 
     # This ends the game.
 
